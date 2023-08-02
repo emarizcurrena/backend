@@ -27,8 +27,10 @@ class ProductManager {
             } else {
                 id = productosPrev[productosPrev.length - 1].id + 1
             }
-            productosPrev.push({ ...producto, id })
+            const newProduct = { ...producto, id }
+            productosPrev.push(newProduct)
             await fs.promises.writeFile(this.path, JSON.stringify(productosPrev))
+            return newProduct
         } catch (error) {
             return error
         }
