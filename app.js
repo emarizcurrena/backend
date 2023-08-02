@@ -8,15 +8,29 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.get('/api/products', async (req, res) => {
+    const { limit } = req.query
     try {
         const products = await productManager.getProducts()
-        res.status(200).json({ message: 'Products', products })
+        if (limit) {
+            res.status(200).json({ message: 'Products', products: products.slice(0, limit) })
+        } else {
+            res.status(200).json({ message: 'Products', products })
+        }
     } catch (error) {
         res.status(500).json({ error })
     }
 
 })
 
+app.get('/api/products/:idProduct', async (req, res) => {
+    const { idProduct } = req.params
+    try {
+        const product = await productManager.getProductById(+idProduct)
+        res.status(200).json({ message: 'Product', product })
+    } catch (error) {
+        res.status(500).json({ error })
+    }
+})
 
 
 
