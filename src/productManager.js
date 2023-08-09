@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { __dirname } from './utils.js'
 
 class ProductManager {
     constructor(path) {
@@ -121,5 +122,5 @@ class ProductManager {
 
 // prueba()
 
-const productManager = new ProductManager('Products.json')
+const productManager = new ProductManager(__dirname + 'Products.json')
 export default productManager
