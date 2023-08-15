@@ -122,5 +122,5 @@ class ProductManager {
 
 // prueba()
 
-const productManager = new ProductManager(__dirname + 'Products.json')
+const productManager = new ProductManager(__dirname + '/Products.json')
 export default productManager
