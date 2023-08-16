@@ -56,4 +56,8 @@ router.get('/home', async (req, res) => {
     res.render('home', { prods })
 })
 
+router.get('/', (req, res) => {
+    res.render('socket')
+})
+
 export default router

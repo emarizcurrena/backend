@@ -1,0 +1,14 @@
+<h2>Real Time Products</h2>
+
+<form action="/api/products" method="post">
+    title: <input type="text" name="title" id="title">
+    description: <input type="text" name="description" id="description">
+    price: <input type="number" name="price" id="price">
+    thumbnail: <input type="text" name="thumbnail" id="thumbnail">
+    code: <input type="text" name="code" id="code">
+    stock: <input type="number" name="stock" id="stock">
+    <input type="submit" value="Add Product">
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
