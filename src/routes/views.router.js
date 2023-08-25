@@ -56,8 +56,16 @@ router.get('/home', async (req, res) => {
     res.render('home', { prods })
 })
 
-router.get('/', (req, res) => {
-    res.render('socket')
+// router.get('/', (req, res) => {
+//     res.render('socket')
+// })
+
+router.get('/live', (req, res) => {
+    res.render('realTimeProducts')
+})
+
+router.get('/chat', (req, res) => {
+    res.render('chat')
 })
 
 export default router

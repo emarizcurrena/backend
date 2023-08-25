@@ -1,6 +1,6 @@
 <h2>Real Time Products</h2>
 
-<form action="/api/products" method="post">
+<form method="post">
     title: <input type="text" name="title" id="title">
     description: <input type="text" name="description" id="description">
     price: <input type="number" name="price" id="price">
@@ -9,6 +9,17 @@
     stock: <input type="number" name="stock" id="stock">
     <input type="submit" value="Add Product">
 </form>
+
+{{#if prods.length}}
+{{#each prods}}
+<p>Product: {{title}}</p>
+<p>Description: {{description}}</p>
+<p>Price: ${{price}}</p>
+<p>ID {{id}}</p>
+{{/each}}
+{{else}}
+<h2>No hay productos disponibles</h2>
+{{/if}}
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>

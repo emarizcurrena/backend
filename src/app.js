@@ -9,6 +9,7 @@ import { Server } from 'socket.io'
 
 const app = express()
 
+// EXPRESS
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
@@ -32,20 +33,32 @@ const httpServer = app.listen(PORT, () => {
 
 const socketServer = new Server(httpServer)
 
-const messages = []
+// const messages = []
+
+const mensajes = []
 
 socketServer.on('connection', (socket) => {
-    //console.log('Cliente conectado', socket.id);
+    console.log(`Cliente conectado: ${socket.id}`);
     socket.on('disconnect', () => {
-        //console.log('Cliente desconectado')
+        console.log('Cliente desconectado')
     })
     // socket.emit('bienvenida', `Bienvenido al socket.io usuario ${socket.id}`)
     // socket.on('respuestaBienvenida', (message) => {
     //     console.log(message);
     // })
 
-    socket.on('message', (message) => {
-        messages.push({ id: socket.id, message })
-        socketServer.emit('allMessages', messages)
+    // socket.on('message', (message) => {
+    //     messages.push({ id: socket.id, message })
+    //     socketServer.emit('allMessages', messages)
+    // })
+
+    socket.on('mensaje', infoMensaje => {
+        mensajes.push(infoMensaje)
+
+        socketServer.emit('chat', mensajes)
+    })
+
+    socket.on('usuarioNuevo', usuario => {
+        socket.broadcast.emit('broadcast', usuario)
     })
 })

@@ -62,6 +62,11 @@ router.delete('/:idProduct', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    await await productManager.addProduct(req.body)
+    res.redirect('/realTimeProducts')
+})
+
 
 
 export default router
