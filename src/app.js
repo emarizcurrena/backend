@@ -2,10 +2,12 @@ import express from 'express'
 import { __dirname } from './utils.js'
 import handlebars from 'express-handlebars'
 import productsRouter from './routes/products.router.js'
+import products2Router from './routes/products2.router.js'
 import cartRouter from './routes/cart.router.js'
 import viewsRouter from './routes/views.router.js'
 import usersRouter from './routes/users.router.js'
 import { Server } from 'socket.io'
+import './db/dbConfig.js'
 
 const app = express()
 
@@ -21,6 +23,7 @@ app.set('view engine', 'handlebars');
 
 // ROUTES
 app.use('/api/products', productsRouter)
+app.use('/api/products2', products2Router)
 app.use('/api/carts', cartRouter)
 app.use('/api/views', viewsRouter)
 app.use('/api/users', usersRouter)
